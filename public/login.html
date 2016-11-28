@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style type="text/css">
       body{
-        margin-left: 2em;
-        margin-right: 2em;
+        margin-left: 10em;
+        margin-right: 10em;
       }
     </style>
     <script
@@ -19,6 +19,7 @@
 
   </head>
   <body>
+  <h1>Login</h1>
     <div id="logbox" class="logbox">
       <div id="top-bar" class="logbox-top-bar">
         <form class="form-horizontal">
@@ -37,16 +38,58 @@
       </div>
     </div>
 
+    <h1>Register</h1>
+
+        <div id="logbox" class="logbox">
+      <div id="top-bar" class="logbox-top-bar">
+        <form class="form-horizontal">
+            <div class="form-group">
+              <label for="usr">Username:</label>
+              <input type="text" class="form-control" id="name2">
+            </div>
+             <label for="email">Email:</label>
+              <input type="text" class="form-control" id="email2">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd2">
+            </div>
+              <button id="submit2" type="button" class="btn btn-default btn-block">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script type="text/javascript">
+
+
    $("#submit").click(function(){
         var name =  $("#name").val();
         var pw = $("#pwd").val();
+         // console.log(pw);
     $.post("/login", { //post to the register api
       name: name,
       password: pw
+
     }, function(response){
       if(response.status === "success") { //if logged in
       window.location = '/index.html';//takes you to homepage
+         }
+       });
+    });
+
+    $("#submit2").click(function(){
+        var name =  $("#name2").val();
+        var pw = $("#pwd2").val();
+        var email = $("#email2").val();
+    $.post("/register", { //post to the register api
+      name: name,
+      password: pw,
+      email: email
+    }, function(response){
+      if(response.status === "success") { //if logged in
+      window.location = '/';
          }
        });
     });

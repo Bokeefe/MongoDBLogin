@@ -49,13 +49,10 @@ app.post('/login', (req, res) => {//login page
 	});
 });
 
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/public/register.html');
-});
 
 app.post('/register', (req, res) => {//api to register a new user
 	// find this email in the database and see if it already exists
-	User.find({email: req.body.email}, (err, data) => {
+	User.find({name: req.body.name}, (err, data) => {
 		if (data.length === 0) {      // if the user doesn't exist
 			var newUser = new User({
 				name: req.body.name,
