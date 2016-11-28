@@ -1,0 +1,21 @@
+{
+  "name": "working user DB",
+  "version": "1.0.0",
+  "description": "Built for a new website with a DB to scale",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently -p \"[{name}]\" -n \"MONGO,HTTP\" -c \"bgBlue.bold,bgMagenta.bold\" \"mongod --dbpath ./data\" \"nodemon server.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bokeefe/Mongodblogin"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "concurrently": "^3.1.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.6.4"
+  }
+}
