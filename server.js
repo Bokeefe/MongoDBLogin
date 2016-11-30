@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var app = express();
 var PORT = process.env.port || 8000;
+//var dbUrl = process.env.MONGODb_URI
 var User = require('./UserSchema.js')(mongoose);
 
 
