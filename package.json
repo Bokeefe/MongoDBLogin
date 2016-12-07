@@ -1,5 +1,5 @@
 {
-  "name": "working user DB",
+  "name": "Mongodb",
   "version": "1.0.0",
   "description": "Built for a new website with a DB to scale",
   "main": "server.js",
