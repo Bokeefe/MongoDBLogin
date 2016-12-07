@@ -3,9 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<h1>We Made it Here!</h1>
-	<script></script>
+	<h1>We Made it Here!</h1>
+        <a href="" class="btn btn-info btn-lg">
+          <span id="logout" class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+	<script>
+		$('#logout').click(
+ 
+function logout () {
+ $.post("/logout", function(response){
+ 		console.log(User.name);
+      if(response.status === "success") { //if logged in
+      window.location = '/';
+      }
+});
+});
+
+		
+	</script>
+
 </body>
 </html>
