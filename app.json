@@ -1,0 +1,8 @@
+{
+	"name":"mongodb",
+	"desription":"a basic experiment for heroku",
+	"repository":"https://github.com/Bokeefe/mongodblogin",
+	"logo":,
+	"keywords":["education","node", "mongodb"],
+	"image":,
+}
