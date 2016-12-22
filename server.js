@@ -8,10 +8,10 @@ var app = express();
 
 var uristring = 
   process.env.MONGODB_URI || 
-  'mongodb://<dbuser>:<dbpassword>@ds127978.mlab.com:27978/heroku_kgpv89bm';
+  'mongodb://<dbuser>:<dbpassword>@ds127948.mlab.com:27948/heroku_q79xlp0l';
 
 var PORT = process.env.PORT || 8000;
-//var dbUrl = process.env.MONGODb_URI
+
 var User = require('./UserSchema.js')(mongoose);
 
 
@@ -20,14 +20,14 @@ mongoose.Promise = global.Promise;
 
 // Makes connection asynchronously.  Mongoose will queue up database
 // operations and release them when the connection is complete.
-mongoose.connect(uristring, function (err, res) {
-  if (err) { 
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-  } else {
-    console.log ('Succeeded connected to: ' + uristring);
-  }
-});
-
+// mongoose.connect(uristring, function (err, res) {
+//   if (err) { 
+//     console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+//   } else {
+//     console.log ('Succeeded connected to: ' + uristring);
+//   }
+// });
+mongoose.connect("mongodb://localhost");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -41,6 +41,7 @@ app.use(session({
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/login.html'); 
 });
+
 
 app.post('/login', (req, res) => {//login page
 	if (!req.body.name || !req.body.password) {//if no name or password provided send error
@@ -94,11 +95,12 @@ app.post('/register', (req, res) => {//api to register a new user
 	});
 });
 
-app.post('/logout', (req, res) => {
 
-  		console.log("here");
-   		res.redirect('/');
-
+app.post('/logout', (req, res) => {//logout api
+	delete req.session.email;
+	res.send({status: 'logout', message: 'succesfully logged out'});
+	console.log("logged out");
+	res.redirect('/');
 });
 
 

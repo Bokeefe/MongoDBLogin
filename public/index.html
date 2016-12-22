@@ -12,16 +12,18 @@
           <span id="logout" class="glyphicon glyphicon-log-out"></span> Log out
         </a>
 	<script>
+	$.get();
 		$('#logout').click(
- 
-function logout () {
- $.post("/logout", function(response){
- 		console.log(User.name);
-      if(response.status === "success") { //if logged in
-      window.location = '/';
-      }
-});
-});
+
+			function logout () {
+				 			console.log("here");
+			 	$.post("/logout", function(response){
+			 		console.log(User.name);
+			      if(response.status === "success") { //if logged in
+			      window.location = '/';
+			      }
+			});
+	});
 
 		
 	</script>
