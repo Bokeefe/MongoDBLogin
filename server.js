@@ -97,7 +97,7 @@ app.post('/register', (req, res) => {//api to register a new user
 
 
 app.post('/logout', (req, res) => {//logout api
-	delete req.session.email;
+	delete req.session.user;
 	res.send({status: 'logout', message: 'succesfully logged out'});
 	console.log("logged out");
 	res.redirect('/');
