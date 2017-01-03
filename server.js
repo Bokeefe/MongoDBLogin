@@ -42,6 +42,14 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/login.html'); 
 });
 
+// app.get("/username",(req,res)=> {
+// 	res.send(req.session.name);
+// });
+app.post('/fuckit', (req, res) => {//login page
+	User.find({name: req.body.name}, (err, user) => {
+			res.send(user);
+	});
+});
 
 app.post('/login', (req, res) => {//login page
 	if (!req.body.name || !req.body.password) {//if no name or password provided send error
@@ -60,6 +68,7 @@ app.post('/login', (req, res) => {//login page
 			res.status(401);
 			res.send({status: 'invalid', message: 'invalid username/password'});
 		} else {//if user is found set session name
+			console.log(user[0].name);
 			req.session.name = user[0].name;
 			res.send({status:"success"});
 		}
@@ -97,12 +106,12 @@ app.post('/register', (req, res) => {//api to register a new user
 
 
 app.post('/logout', (req, res) => {//logout api
-	delete req.session.user;
+	console.log(req.session.name);
+	delete user[0].name;
 	res.send({status: 'logout', message: 'succesfully logged out'});
 	console.log("logged out");
 	res.redirect('/');
 });
-
 
 ////////
 app.use(express.static('public'));
