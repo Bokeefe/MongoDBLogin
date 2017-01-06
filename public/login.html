@@ -19,14 +19,8 @@
 
   </head>
   <body>
-  <div class="alert alert-warning" style="display:show">
-    <strong>Hey!</strong> Wrong Username
-  </div>
-  <div class="alert alert-warning" style="display:show">
-    <strong>Hey!</strong> Wrong Password
-  </div>
-  <div class="alert alert-danger" style="display:none">
-    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  <div id="xusername" class="alert alert-danger" style="visibility: hidden;">
+    <strong>Hey!</strong> Invalid Username or Password
   </div>
   <h1>Login</h1>
     <div id="logbox" class="logbox">
@@ -76,16 +70,17 @@
    $("#submit").click(function(){
         var name =  $("#name").val();
         var pw = $("#pwd").val();
-         // console.log(pw);
     $.post("/login", { //post to the register api
       name: name,
       password: pw
-
     }, function(response){
       if(response.status === "success") { //if logged in
       window.location = '/index.html';//takes you to homepage
-         }
-       });
+      } else {
+          console.log(response.status);
+          $("#xusername").show();
+      }
+    });
     });
 
     $("#submit2").click(function(){
@@ -99,6 +94,8 @@
     }, function(response){
       if(response.status === "success") { //if logged in
       window.location = '/';
+         } else {
+            $("#xusername").show();//lol didn't get to test this
          }
        });
     });

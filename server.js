@@ -48,19 +48,17 @@ app.get("/username",(req,res)=> {
 
 app.post('/login', (req, res) => {//login page
 	if (!req.body.name || !req.body.password) {//if no name or password provided send error
-		res.status(401);
+		// res.status(401);
 		console.info('Invalid Login', req.body.name);
 		res.send({status: 'error', message: 'user/pass not entered'});
 		return;
 	}
-
-
 	User.find({name: req.body.name}, (err, user) => {//search for provided name and password in user database
 		if (user.length === 0) {
-			res.status(401);
+			// res.status(401);
 			res.send({status: 'invalid', message: 'invalid username/passord'});
 		} else if (user[0].password !== req.body.password) {
-			res.status(401);
+			// res.status(401);
 			res.send({status: 'invalid', message: 'invalid username/password'});
 		} else {//if user is found set session name
 
@@ -104,7 +102,6 @@ app.post('/logout', (req, res) => {//logout api
 	console.log(req.session.name);
 	delete req.session.name;
 	res.send({status: 'logout', message: 'succesfully logged out'});
-	console.log("logged out");
 });
 
 ////////
