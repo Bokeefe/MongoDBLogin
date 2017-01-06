@@ -8,41 +8,34 @@
 </head>
 <body>
 	<h1>We Made it Here <h1 id="result"></h1><h1>!</h1>
-        <a href="" class="btn btn-info btn-lg">
-          <span id="logout" class="glyphicon glyphicon-log-out"></span> Log out
-        </a>
+        <!--<a href="" class="btn btn-info btn-lg">
+          <span id="logout" class="glyphicon glyphicon-log-out"></span> Log Out
+        </a>-->
+        <button id="fart">Fart</button>
 	<script>
-	$.get();
-		$('#logout').click(
-
-			function logout () {
-				 			console.log("here");
-			 	$.post("/logout", function(response){
-			 		console.log(User.name);
-			      if(response.status === "success") { //if logged in
-			      window.location = '/';
-			      }
-			});
+	$(document).ready(function() {
+	    $.get("/username", function(data, status){
+	  		if (status === "success"){
+				$('#result').html(data);
+			} else {
+				$('#result').html("this is broken");
+			}
+	    });
 	});
+	
+	$("#fart").click(function(){logout();});
 
-$(document).ready(function() {
-  //   $.get("/username", function(data, status){
-  // 		if (status === "success"){
-  // 			console.log("front end working");
-		// 	$('#result').html(data);
-		// } else {
-		// 	$('#result').html("this is broken");
-		// }
-  //   });
-    $.post("/fuckit", function(data, status){
-    	  		if (status === "success"){
-  			console.log("front end working");
-			$('#result').html(data);
-		} else {
-			$('#result').html("this is broken");
-		}
-    });
-});
+	function logout(){
+		console.log("fart");
+		$.post("/logout", function (data, status){
+			if(status ==="success"){
+				window.location = "/login.html";
+			} else {
+				reload();
+			}
+		});
+	}
+
 
 
 		
