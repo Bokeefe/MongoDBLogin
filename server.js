@@ -1,4 +1,5 @@
 /* jshint esversion:6 */
+
 var fs = require("fs");
 var express = require('express');
 var session = require('express-session');
@@ -11,15 +12,14 @@ var uristring =
   'mongodb://<dbuser>:<dbpassword>@ds127948.mlab.com:27948/heroku_q79xlp0l';
 
 var PORT = process.env.PORT || 8000;
-
 var User = require('./UserSchema.js')(mongoose);
-
 
 mongoose.Promise = global.Promise; 
 
 
 // Makes connection asynchronously.  Mongoose will queue up database
 // operations and release them when the connection is complete.
+
 // mongoose.connect(uristring, function (err, res) {
 //   if (err) { 
 //     console.log ('ERROR connecting to: ' + uristring + '. ' + err);
@@ -27,6 +27,7 @@ mongoose.Promise = global.Promise;
 //     console.log ('Succeeded connected to: ' + uristring);
 //   }
 // });
+
 mongoose.connect("mongodb://localhost");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -61,7 +62,6 @@ app.post('/login', (req, res) => {//login page
 			// res.status(401);
 			res.send({status: 'invalid', message: 'invalid username/password'});
 		} else {//if user is found set session name
-
 			req.session.name = user[0].name;
 			res.send({status:"success"});
 		}
