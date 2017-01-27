@@ -1,0 +1,15 @@
+{
+	"first": "String",
+	"last": "String",
+	"email": "String",
+	"zip": "Number",
+	"interests": {
+		"Climate Justice": "false",
+		"LGBTQ =": "false",
+		"Money in Politics": "false",
+		"Income Inequality": "false",
+		"Reproductive Rights": "false",
+		"Voting Rights": "false",
+		"Indigeonous Rights":"false"
+	}
+}
